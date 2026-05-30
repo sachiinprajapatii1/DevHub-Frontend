@@ -13,7 +13,8 @@ export const SocketProvider = ({ children }) => {
     if (!user) return   // only connect when logged in
 
     // Create ONE connection for the whole app
-    const newSocket = io('http://localhost:5000')
+    const SOCKET_URL = import.meta.env.VITE_API_URL;
+    const newSocket = io(SOCKET_URL)
     setSocket(newSocket)
 
     // Tell the server "I am online" with my userId
